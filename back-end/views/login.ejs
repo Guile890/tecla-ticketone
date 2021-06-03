@@ -1,0 +1,37 @@
+<%- include("cabeceras/cabecera.main") %> 
+
+<body class="text-center">
+
+  <main class="form-signin">
+    <form id="loginForm" method="POST" class="row g-3 needs-validation" novalidate>
+      <span class="material-icons md-64">
+        people_alt
+      </span>
+      <h1 class="h3 mb-3 fw-normal">Login</h1>
+      <label for="GET-email" class="visually-hidden">Correo electrónico</label>
+      <input type="email" id="GET-emails" class="form-control" placeholder="Correo electrónico" required autofocus>
+      <div class="invalid-feedback">
+        Correo electrónico es un campo obligatorio.
+      </div>
+      <label for="GET-pas" class="visually-hidden">Contraseña</label>
+      <input type="password" id="GET-pass" class="form-control" placeholder="Contraseña" required>
+      <div class="invalid-feedback">
+        Contraseña es un campo obligatorio.
+      </div>
+      <br>
+      <div style="text-align: center;">
+        <a href="/registro" class="btn btn-secondary btn-lg " tabindex="-1" role="button"
+          aria-disabled="true">Registrarse</a>
+      <button type="submit" id="agregar" class="btn btn-primary btn-lg">Iniciar sesión </button>
+      </div>
+      <p class="mb-1">&copy; 2021 Presupuestos Tecla</p>
+    </form>
+  </main>
+
+  <script src="/js/login.js"></script>
+
+
+
+</body>
+
+</html>

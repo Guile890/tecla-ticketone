@@ -1,4 +1,4 @@
-// importacion de modulos
+// importacion de modulos externos
 const express = require('express')
 const app = express()
 require('dotenv').config()
@@ -7,10 +7,15 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./swagger_output.json')
 
-
+// importacion de modulos internos
+const vistaUsuarios = require('./mvc/vista/vista.usuario')
+const vistaPresupuestos = require('./mvc/vista/vista.presupuestos');
+const Presupuesto = require('./mvc/modelo/modelo.presupuesto')
 
 // importacion db
 const sequelize = require('./db/conexion')
+
+
 
 //middleware globales
 app.use(express.json());
@@ -26,6 +31,7 @@ app.set('views', __dirname + '/views');
 // iniciar servidor 
 async function inicioServidor(){
     try{
+        await Presupuesto.sync({alter: true})
         await sequelize.authenticate();
         console.log('Conexión correcta con la db');
         app.listen(process.env.PORT,function(){
@@ -39,3 +45,5 @@ async function inicioServidor(){
   inicioServidor();
 
   //Views
+vistaUsuarios(app);
+vistaPresupuestos(app);
