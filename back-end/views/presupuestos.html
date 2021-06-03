@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/back-end/public/css/presupuestos.css">
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Presupuestos Tecla</title>
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <button type="button" class="btn btn-secondary">Mi perfil</button>
+                <button type="button" class="btn btn-secondary">Cerrar sesión</button>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="navbar-toggler" type="button">
+                <span class="material-icons">
+                    home
+                </span>
+            </button>
+
+        </nav>
+    </div>
+    <div class="container">
+        <h1 style="text-align: center;">Presupuestos</h1>
+        <a data-toggle="tooltip" data-placement="top" title="Agregar Presupuesto" tool href="/createProducto"
+            class="btn"><i class='bx bxs-plus-circle bx-md'></i></a>
+        <table id="presupuesto" class="wp-list-table widefat striped posts" style="width: 95%; height: 75%;">
+            <thead>
+                <tr class="bg-secondary text-white">
+                    <th scope="col">Enviar</th>
+                    <th scope="col">Id Presupuesto</th>
+                    <th scope="col">Fecha Creación</th>
+                    <th scope="col">Proyecto</th>
+                    <th scope="col">Versiones</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach((producto)=>{ %>
+                    <tr>
+                        <td>
+                            <a href="/updateProducto/<%= producto.id%>" class="btn"><i class='bx bxs-send'></i></a>
+                        </td>
+                        <td>
+                            <%= producto.descripcion %>
+                        </td>
+                        <td>
+                            <%= producto.precio %>
+                        </td>
+                        <td>
+                            <%= producto.imagen %>
+                        </td>
+                        <td>
+                            <%= producto.existencia %>
+                        </td>
+                        <!-- <td>
+                        <% if(producto.tipo_usuario==1){ %>
+                          Administrador
+                          <% } else{ %>
+                            Usuario
+                            <% } %>
+                      </td> -->
+                        <td>
+                            <a data-toggle="tooltip" data-placement="top" title="Editar"
+                                href="/updatePresupuesto/<%= producto.id%>" class="btn"><i class='bx bxs-edit'></i></a>
+                            <a data-toggle="tooltip" data-placement="top" title="Eliminar"
+                                onclick="eliminar('<%= producto.id %>')" class="btn"><i
+                                    class='bx bxs-trash-alt'></i></a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="/back-end/public/js/presupuestos.js"></script>
+</body>
+
+</html>
