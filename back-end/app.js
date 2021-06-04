@@ -11,6 +11,7 @@ const swaggerFile = require('./swagger_output.json')
 const vistaUsuarios = require('./mvc/vista/vista.usuario')
 const vistaPresupuestos = require('./mvc/vista/vista.presupuestos');
 const Presupuesto = require('./mvc/modelo/modelo.presupuesto')
+const Usuario = require('./mvc/modelo/modelo.usuario')
 
 // importacion db
 const sequelize = require('./db/conexion')
@@ -31,6 +32,7 @@ app.set('views', __dirname + '/views');
 // iniciar servidor 
 async function inicioServidor(){
     try{
+        await Usuario.sync({alter: true})
         await Presupuesto.sync({alter: true})
         await sequelize.authenticate();
         console.log('Conexión correcta con la db');

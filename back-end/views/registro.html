@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/presupuestos.css">
+    <!-- boxicons -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap core CSS -->
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <title>Presupuestos Tecla</title>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <span class="material-icons md-64">
+                    person_add
+                </span>
+                <h2>Registrarse</h2>
+            </div>
+
+            <div class="row g-8 ">
+
+                <div class="col-md-12 col-lg-12">
+                    <h4 class="mb-3 text-center">Información de usuario</h4>
+                    <form id="formulario" method="POST" class="row g-3 needs-validation" novalidate>
+                        <div class="row g-3">
+
+                            <div class="col-sm-2">
+
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="GET-nombre" class="form-label">Nombre (s)</label>
+                                <input maxlength="50" pattern="[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ.-]+" type="text" class="form-control" id="GET-nombres" placeholder="" value="" required pattern="">
+                                <div class="invalid-feedback">
+                                    Nombre (s) es un campo obligatorio.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="GET-apellido" class="form-label">Apellidos</label>
+                                <input maxlength="70" pattern="[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ.-]+" type="text" class="form-control" id="GET-apellidos" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Apellidos es un campo obligatorio.
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+
+                            <div class="col-8">
+                                <label for="GET-email" class="form-label">Email <span class="text-muted"></span></label>
+                                <input maxlength="30" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" class="form-control" id="GET-emails" placeholder="correo@example.com"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Por favor ingresa una dirección de correo válida.
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+                            <div class="col-4">
+                                <label for="GET-password" class="form-label">Contraseña <span
+                                        class="text-muted"></span></label>
+                                <input maxlength="25" type="password" class="form-control" id="GET-passwords" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingresar una contraseña.
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <label for="GET-celular" class="form-label">Celular </label>
+                                <input maxlength="10" minlength="10" pattern="[0-9]*" type="telefono" class="form-control" id="GET-celulars" placeholder="55 XX XX XX XX "
+                                    required>
+                                <div class="invalid-feedback">
+                                    Ingresar celular de contacto a 10 dígitos. 
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+
+                            </div>
+                        </div>
+                </div>
+                <hr class="my-4">
+                <div style="text-align: center;">
+                    <a href="/login" class="btn btn-secondary btn-lg " tabindex="-1" role="button"
+                        aria-disabled="true">Login</a>
+                    <button type="submit" id="agregar" class="btn btn-primary btn-lg" >Registrar</button>
+                </div>
+                <br>
+                </form>
+            </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="../public/js/registro.js"></script>
+    <script src="../public/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
+</body>
+
+</html>

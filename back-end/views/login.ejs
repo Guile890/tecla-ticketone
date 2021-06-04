@@ -9,7 +9,7 @@
       </span>
       <h1 class="h3 mb-3 fw-normal">Login</h1>
       <label for="GET-email" class="visually-hidden">Correo electrónico</label>
-      <input type="email" id="GET-emails" class="form-control" placeholder="Correo electrónico" required autofocus>
+      <input pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="email" id="GET-emails" class="form-control" placeholder="Correo electrónico" required autofocus>
       <div class="invalid-feedback">
         Correo electrónico es un campo obligatorio.
       </div>

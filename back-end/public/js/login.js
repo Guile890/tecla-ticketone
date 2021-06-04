@@ -1,4 +1,10 @@
+class Loggeo{
+    constructor(email,password){
+        this.email = email,
+        this.password = password
+    }
 
+}
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict'
@@ -22,46 +28,49 @@
 const form = document.getElementById('loginForm');
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    let registro = new Usuario(
+    let credenciales = new Loggeo(
         event.target['GET-emails'].value,
         event.target['GET-pass'].value,
 
     );
-    if ((registro.descripcion == null || registro.descripcion == "") && (registro.precio == null || registro.precio == "") && (registro.existencia == null || registro.existencia == "")
-        && (registro.imagen == null || registro.imagen == "") && (registro.categoria == null || registro.categoria == "")) {
+    if ((credenciales.email == null || registro.email == "") || (credenciales.password == null || credenciales.password == "")){
         swal({
-            text: "El formulario está vacío favor de verificar la información",
+            text: "El formulario es inválido, verifica la información",
             button: "Ok",
-        });
+        });       
     }else{
         try {
-            console.log('valor a agregar',registro)
-            let resultado = await fetch("http://localhost:3000/producto",{
+            console.log('valor a agregar',credenciales)
+            let resultado = await fetch("http://localhost:3000/login",{
                 method: 'post',
                 headers: {
                     "Accept": "application/json, text/plain, *,*",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(registro)
+                body: JSON.stringify(credenciales)
             })
-            if(resultado.ok){
+            let respuesta = await resultado.json();
+            if(respuesta === 'Usuario o contraseña incorrecta'){
                 swal({
-                    text: "Producto agregado correctamente",
+                    text: "Usuario o contraseña incorrecta",
+                    icon: "error",
+                    button: "Ok",
+                });
+            }else{
+                swal({
+                    text: "Usuario o contraseña incorrecta",
                     icon: "success",
                     button: "Ok",
                 });
+
             }
-            // location.href = '/createProducto'
-            console.log('resultadooo',resultado)
-            return resultado;
 
         } catch (error) {
             swal({
-                text: `${error.message}`,
+                text: "Error al intentar ingresar, intenta de nuevo",
                 button: "Ok",
             });
-            throw console.log(error)
-    
+            console.log('valor de resultado',resultado)
         }
     }
    
