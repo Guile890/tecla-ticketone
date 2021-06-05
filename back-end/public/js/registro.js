@@ -41,7 +41,6 @@ form.addEventListener('submit', async(event) =>{
         event.target['GET-passwords'].value,
         event.target['GET-celulars'].value,
     );
-    console.log('valor usuario ', usuario);
     if((usuario.nombre == null || usuario.nombre == "") || (usuario.apellidos == null || usuario.apellidos == "") || (usuario.email == null || usuario.email == "")
     || (usuario.password == null || usuario.password == "") || (usuario.celular == null || usuario.celular == "")){
         swal({
@@ -58,7 +57,6 @@ form.addEventListener('submit', async(event) =>{
                 },
                 body: JSON.stringify(usuario)
             })
-            console.log(resultado)
             if(resultado.ok){
                 swal({
                     text: "Usuario registrado correctamente",

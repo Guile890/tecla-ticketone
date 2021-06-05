@@ -33,9 +33,7 @@ const Usuario = sequelize.define('Usuario', {
 
 module.exports = Usuario
 module.exports.verificarExistencia = async (data) =>{
-    console.log('entrando a modelo',data)
     let resultado = await Usuario.findOne({where: {email:data.email}})
-    console.log('valor result',resultado)
     if (resultado === null){
         return false
     }else {

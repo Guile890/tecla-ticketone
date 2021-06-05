@@ -6,7 +6,6 @@ module.exports.listarPresupuestos = async ()=>{
         let resultado = await modeloPresupuestos.getPresupuestos()
         return resultado
     }catch (err){
-        console.log('Error de modelos' + err)
         throw new Error ('Ocurrio un problema en productos.service')
     }
 } 

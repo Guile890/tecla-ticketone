@@ -54,7 +54,6 @@ form.addEventListener('submit', async (event) => {
         });       
     }else{
         try {
-            console.log('valor a agregar',credenciales)
             let resultado = await fetch("http://localhost:3000/login",{
                 method: 'post',
                 headers: {

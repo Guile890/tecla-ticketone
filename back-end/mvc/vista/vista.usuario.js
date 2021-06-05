@@ -24,7 +24,6 @@ module.exports = (app) => {
         try {
             res.render('login');
         }catch (err){
-            console.log(err)
             res.status(400).json('Error al dirigirse a la ruta')
         }
     })
@@ -32,7 +31,6 @@ module.exports = (app) => {
         try {
             res.render('registro');
         }catch (err){
-            console.log(err)
             res.status(400).json('Error al dirigirse a la ruta')
         }
     })

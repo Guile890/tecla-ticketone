@@ -17,7 +17,6 @@ module.exports = (app) => {
         try {
             res.render('newPresupuesto');
         }catch (err){
-            console.log(err)
             res.status(400).json('Error al dirigirse a la ruta')
         }
     })
@@ -28,7 +27,6 @@ module.exports = (app) => {
             let resultado = await controladorPresupuestos.listarPresupuestos()
             res.render('presupuestos', {results:resultado});
         }catch (err){
-            console.log(err)
             res.status(400).json('Error al dirigirse a la ruta')
         }
     })

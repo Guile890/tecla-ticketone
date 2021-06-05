@@ -36,7 +36,6 @@ module.exports.getInfoUser = async (credenciales) => {
         let resultado =  await modeloUsuarios.getInfoUser(credenciales)
         return resultado
     }catch (err){
-        console.log(err)
         throw new Error (' no semuy bien que paso')
     }
 }
@@ -50,7 +49,6 @@ module.exports.generarToken = async(credenciales) =>{
         )
         return resultado
     }catch (err){
-        console.log(err)
         throw new Error (err)
     }
 
