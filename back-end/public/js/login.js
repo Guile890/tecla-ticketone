@@ -5,6 +5,19 @@ class Loggeo{
     }
 
 }
+
+class UsuarioInfo{
+    constructor (nombre,apellidos,email,password,celular){
+        this.nombre = nombre,
+        this.apellidos = apellidos,
+        this.email = email,
+        this.password = password,
+        this.celular = celular
+    }
+    static async guardarStorage(usuario){
+        localStorage.setItem("dataUsuario", JSON.stringify(usuario))
+    }
+}
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
     'use strict'
@@ -56,13 +69,20 @@ form.addEventListener('submit', async (event) => {
                     icon: "error",
                     button: "Ok",
                 });
-            }else{
+            }else{                
+                let usuario = new UsuarioInfo(
+                    respuesta.userInfo.nombre,
+                    respuesta.userInfo.apellidos,
+                    respuesta.userInfo.email,
+                    respuesta.userInfo.password,
+                    respuesta.userInfo.celular,
+                );
+                UsuarioInfo.guardarStorage(usuario)
                 swal({
-                    text: "Usuario o contraseña incorrecta",
+                    text: "Bienvenid@",
                     icon: "success",
-                    button: "Ok",
                 });
-
+                location.href = '/presupuestos'
             }
 
         } catch (error) {
