@@ -24,7 +24,7 @@ const Usuario = sequelize.define('Usuario', {
         allowNull: false
     },
     celular: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(10),
         allowNull: false,
     }
 }, {
@@ -33,7 +33,9 @@ const Usuario = sequelize.define('Usuario', {
 
 module.exports = Usuario
 module.exports.verificarExistencia = async (data) =>{
-    let resultado = await Usuarios.findOne({where: {email:data.email}})
+    console.log('entrando a modelo',data)
+    let resultado = await Usuario.findOne({where: {email:data.email}})
+    console.log('valor result',resultado)
     if (resultado === null){
         return false
     }else {
@@ -57,7 +59,7 @@ module.exports.insertUsuario = async (data) => {
 
 module.exports.getInfoUser = async (data) =>{
     try{
-        let resultado = await Usuarios.findOne({where: {email:data.email, password: data.password}})
+        let resultado = await Usuario.findOne({where: {email:data.email, password: data.password}})
         return resultado
     }
     catch(error) {

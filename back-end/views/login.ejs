@@ -1,5 +1,4 @@
-<%- include("cabeceras/cabecera.main") %> 
-
+<%- include("cabeceras/cabecera.menu.ejs") %> 
 <body class="text-center">
 
   <main class="form-signin">
@@ -22,13 +21,14 @@
       <div style="text-align: center;">
         <a href="/registro" class="btn btn-secondary btn-lg " tabindex="-1" role="button"
           aria-disabled="true">Registrarse</a>
-      <button type="submit" id="agregar" class="btn btn-primary btn-lg">Iniciar sesión </button>
+      <button type="submit" id="login" class="btn btn-primary btn-lg">Iniciar sesión </button>
       </div>
       <p class="mb-1">&copy; 2021 Presupuestos Tecla</p>
     </form>
   </main>
 
   <script src="/js/login.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
 
 
 

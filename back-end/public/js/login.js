@@ -46,7 +46,7 @@ form.addEventListener('submit', async (event) => {
         event.target['GET-pass'].value,
 
     );
-    if ((credenciales.email == null || registro.email == "") || (credenciales.password == null || credenciales.password == "")){
+    if ((credenciales.email == null || credenciales.email == "") || (credenciales.password == null || credenciales.password == "")){
         swal({
             text: "El formulario es inválido, verifica la información",
             button: "Ok",
@@ -82,7 +82,9 @@ form.addEventListener('submit', async (event) => {
                     text: "Bienvenid@",
                     icon: "success",
                 });
-                location.href = '/presupuestos'
+                setTimeout(() => {
+                    location.href = '/presupuestos'
+                }, 3000);
             }
 
         } catch (error) {

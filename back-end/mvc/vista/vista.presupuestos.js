@@ -12,6 +12,16 @@ app.use(midd.limiter);
 app.use(cors());
 module.exports = (app) => {
 
+    //vistas
+    app.get('/newPresupuesto', async(req,res)=> {
+        try {
+            res.render('newPresupuesto');
+        }catch (err){
+            console.log(err)
+            res.status(400).json('Error al dirigirse a la ruta')
+        }
+    })
+
     //end-point para listar presupuestos
     app.get('/presupuestos', async(req,res)=> {
         try {

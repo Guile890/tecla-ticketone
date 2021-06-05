@@ -58,7 +58,8 @@ form.addEventListener('submit', async(event) =>{
                 },
                 body: JSON.stringify(usuario)
             })
-            if(!resultado){
+            console.log(resultado)
+            if(resultado.ok){
                 swal({
                     text: "Usuario registrado correctamente",
                     icon: "success",

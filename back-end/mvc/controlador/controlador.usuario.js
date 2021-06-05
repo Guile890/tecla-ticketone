@@ -1,8 +1,11 @@
+const sequelize = require('../../db/conexion')
 const modeloUsuarios = require('../modelo/modelo.usuario')
+const jwt = require('jsonwebtoken');
 
 // insertar nuevo usuario
 module.exports.insertUsuario = async (usuario) => {
     try{
+        
         let resultado = await this.verificarExistencia(usuario)
         if(resultado){
             return true //existe el usuario
@@ -19,6 +22,7 @@ module.exports.insertUsuario = async (usuario) => {
 
 
 module.exports.verificarExistencia = async(usuario) =>{
+    
     try{
         let resultado = await modeloUsuarios.verificarExistencia(usuario)
         return resultado;
@@ -41,8 +45,8 @@ module.exports.generarToken = async(credenciales) =>{
     try {
         let resultado = jwt.sign({
             exp: Math.floor(Date.now() / 1000) + (60 * 60),
-            data
-            }, process.env.SECRET_KET
+            credenciales
+            }, process.env.SECRET_KEY
         )
         return resultado
     }catch (err){

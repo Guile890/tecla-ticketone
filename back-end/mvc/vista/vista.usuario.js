@@ -5,6 +5,8 @@ const app = express()
 const midd = require('../../midd/midd');
 const cors = require('cors');
 
+const middJsonAuth = require('../../midd/midd.jsonAuth')
+
 
 //middleware globales
 app.use(express.json());
@@ -20,7 +22,15 @@ module.exports = (app) => {
     // vista para login
     app.get('/login', async(req,res)=> {
         try {
-            res.render('login.ejs');
+            res.render('login');
+        }catch (err){
+            console.log(err)
+            res.status(400).json('Error al dirigirse a la ruta')
+        }
+    })
+    app.get('/registro', async(req,res)=> {
+        try {
+            res.render('registro');
         }catch (err){
             console.log(err)
             res.status(400).json('Error al dirigirse a la ruta')
@@ -33,6 +43,7 @@ module.exports = (app) => {
     
     // insert usuario
     app.post("/usuario", cors(midd.corsOptions), async function (req, res) {
+        
         let usuario = req.body
         try {
             let usuarios = await controladorUsuarios.insertUsuario(usuario);
@@ -55,7 +66,7 @@ module.exports = (app) => {
                 throw new Error (err)
             }           
         }catch(error){
-            res.status(500).json({ error: err.message })
+            res.status(500).json({ error: error.message })
         }
     })
 }
