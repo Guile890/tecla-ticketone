@@ -53,7 +53,7 @@ module.exports = (app) => {
             res.status(500).json({ error: err.message })
         }
     });
-
+    // loggear usuario 
     app.post("/login",cors(midd.corsOptions), async function (req,res){
         let credenciales = req.body
         try{
@@ -63,7 +63,7 @@ module.exports = (app) => {
                 let token = await controladorUsuarios.generarToken(credenciales)
                 res.json({token: token, userInfo: userInfo})
             }else{
-                throw new Error (err)
+                res.json('Usuario o contraseña incorrecta') 
             }           
         }catch(error){
             res.status(500).json({ error: error.message })

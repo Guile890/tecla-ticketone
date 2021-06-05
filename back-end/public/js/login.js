@@ -14,8 +14,9 @@ class UsuarioInfo{
         this.password = password,
         this.celular = celular
     }
-    static async guardarStorage(usuario){
+    static async guardarStorage(usuario,token){
         localStorage.setItem("dataUsuario", JSON.stringify(usuario))
+        localStorage.setItem("token",JSON.stringify(token))
     }
 }
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -77,7 +78,7 @@ form.addEventListener('submit', async (event) => {
                     respuesta.userInfo.password,
                     respuesta.userInfo.celular,
                 );
-                UsuarioInfo.guardarStorage(usuario)
+                UsuarioInfo.guardarStorage(usuario,respuesta.token)
                 swal({
                     text: "Bienvenid@",
                     icon: "success",
@@ -92,7 +93,6 @@ form.addEventListener('submit', async (event) => {
                 text: "Error al intentar ingresar, intenta de nuevo",
                 button: "Ok",
             });
-            console.log('valor de resultado',resultado)
         }
     }
    

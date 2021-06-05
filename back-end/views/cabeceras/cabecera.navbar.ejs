@@ -1,8 +1,8 @@
 <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-            <button type="button" class="btn btn-secondary">Mi perfil</button>
-            <a type="button" class="btn btn-secondary" href="">Cerrar sesión</a> 
+            <button type="button" id="perfil" class="btn btn-secondary">Mi perfil</button>
+            <button type="button" id="logout" class="btn btn-secondary" href="/logout">Cerrar sesión</button> 
         </div>
     </div>
     <nav class="navbar navbar-dark bg-dark">
@@ -11,6 +11,7 @@
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <h1></h1>
         <a class="navbar-toggler" type="button" href="/presupuestos">
             <span class="material-icons">
                 home
@@ -19,3 +20,5 @@
 
     </nav>
 </div>
+<script src="/js/cabecera.navbar.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
