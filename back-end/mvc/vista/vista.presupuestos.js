@@ -13,14 +13,13 @@ app.use(cors());
 module.exports = (app) => {
 
     //vistas
-    app.get('/newPresupuesto', async(req,res)=> {
+    app.get('/generarPresupuesto', async(req,res)=> {
         try {
-            res.render('newPresupuesto');
+            res.render('newPresupuesto.ejs');
         }catch (err){
             res.status(400).json('Error al dirigirse a la ruta')
         }
     })
-
     //end-point para listar presupuestos
     app.get('/presupuestos', async(req,res)=> {
         try {
@@ -30,5 +29,33 @@ module.exports = (app) => {
             res.status(400).json('Error al dirigirse a la ruta')
         }
     })
+
+    //generar nuevo presupuesto
+    app.post('/newPresupuesto', async(req,res)=> {
+        let presupuesto = req.body
+        try {
+            let resultado = await controladorPresupuestos.newPresupuesto(presupuesto);
+            console.log('resultado neeeew',resultado)
+            res.json(resultado)
+        }catch (err){
+            res.status(400).json('Error al dirigirse a la ruta')
+        }
+    })
+
+     // ruta para eliminar producto
+     app.get('/presupuesto/delete/:id', async (req,res)=>{
+        let id = req.params.id;
+        try {
+            let resultado = await controladorPresupuestos.eliminarPresupuesto(id)
+            if(resultado){
+                res.redirect('/');
+            }      
+        }catch (err){
+            res.status(400).json('No se puedo eliminar el producto')
+        }
+    })
+
+
+
 
 }

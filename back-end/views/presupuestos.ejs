@@ -2,7 +2,7 @@
 <%- include("cabeceras/cabecera.navbar.ejs") %> 
     <div class="container">
         <h1 style="text-align: center;">Presupuestos</h1>
-        <a data-toggle="tooltip" data-placement="top" title="Agregar Presupuesto" tool href="/newPresupuesto"
+        <a data-toggle="tooltip" data-placement="top" title="Agregar Presupuesto" tool onclick="agregar()"
             class="btn"><i class='bx bxs-plus-circle bx-md'></i></a>
         <table id="presupuesto" class="wp-list-table widefat striped posts" style="width: 95%; height: 75%;">
             <thead>
@@ -19,32 +19,25 @@
                 <% results.forEach((presupuesto)=>{ %>
                     <tr>
                         <td>
-                            <a href="/updateProducto/<%= producto.id%>" class="btn"><i class='bx bxs-send'></i></a>
+                            <a href="/updateProducto/<%= presupuesto.idPresupuesto%>" class="btn"><i class='bx bxs-send'></i></a>
                         </td>
                         <td>
-                            <%= producto.idPresupuesto %>
+                            <%= presupuesto.idPresupuesto %>
                         </td>
                         <td>
-                            <%= producto.fechaCreacion %>
+                            <%= presupuesto.fechaCreacion %>
                         </td>
                         <td>
-                            <%= producto.proyecto %>
+                            <%= presupuesto.proyecto %>
                         </td>
                         <td>
-                            <%= producto.versiones %>
+                            <%= presupuesto.versiones %>
                         </td>
-                        <!-- <td>
-                        <% if(producto.tipo_usuario==1){ %>
-                          Administrador
-                          <% } else{ %>
-                            Usuario
-                            <% } %>
-                      </td> -->
                         <td>
                             <a data-toggle="tooltip" data-placement="top" title="Editar"
-                                href="/updatePresupuesto/<%= producto.id%>" class="btn"><i class='bx bxs-edit'></i></a>
+                                href="/updatePresupuesto/<%= presupuesto.idPresupuesto%>" class="btn"><i class='bx bxs-edit'></i></a>
                             <a data-toggle="tooltip" data-placement="top" title="Eliminar"
-                                onclick="eliminar('<%= producto.id %>')" class="btn"><i
+                                onclick="eliminar('<%= presupuesto.idPresupuesto%>','<%= presupuesto.proyecto %>')" class="btn"><i
                                     class='bx bxs-trash-alt'></i></a>
                         </td>
                     </tr>
@@ -67,6 +60,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="/js/presupuestos.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script> 
 </body>
 
 </html>
