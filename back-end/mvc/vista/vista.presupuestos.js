@@ -13,9 +13,11 @@ app.use(cors());
 module.exports = (app) => {
 
     //vistas
-    app.get('/generarPresupuesto', async(req,res)=> {
+    app.get('/generarPresupuesto/:id', async(req,res)=> {
+        let id = req.params.id
         try {
-            res.render('newPresupuesto.ejs');
+            let resultado = await controladorPresupuestos.obtenerInfoPresupuesto(id);
+            res.render('newPresupuesto',{info:resultado});
         }catch (err){
             res.status(400).json('Error al dirigirse a la ruta')
         }
@@ -35,8 +37,7 @@ module.exports = (app) => {
         let presupuesto = req.body
         try {
             let resultado = await controladorPresupuestos.newPresupuesto(presupuesto);
-            console.log('resultado neeeew',resultado)
-            res.json(resultado)
+            res.json(resultado[0].idPresupuesto)
         }catch (err){
             res.status(400).json('Error al dirigirse a la ruta')
         }

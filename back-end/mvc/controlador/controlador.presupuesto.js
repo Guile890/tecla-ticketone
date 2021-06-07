@@ -28,3 +28,13 @@ module.exports.newPresupuesto = async(presupuesto) =>{
         throw new Error ('No se pudo eliminar el presupuesto seleccionado')
     }
 };
+
+//obtener info del presupuesto by id
+module.exports.obtenerInfoPresupuesto = async (id) => {
+    try{
+        let resultado = await modeloPresupuestos.obtenerInfoPresupuesto(id)
+        return resultado;
+    }catch(error){
+        throw new Error ('No se pudo acceder el presupuesto seleccionado')
+    }
+}

@@ -1,7 +1,19 @@
 <%- include("cabeceras/cabecera.menu.ejs") %> 
     <%- include("cabeceras/cabecera.navbar.ejs") %> 
     <div class="container">
-        <h1 style="text-align: center;">Nuevo presupuesto</h1>
+        <% info.forEach((presupuesto)=>{ %>
+            <h2 style="text-align: center;">Nuevo presupuesto: <%= presupuesto.idPresupuesto %></h2>
+        <div class="row">
+            <div class="col-4">
+                <h4>Proyecto:  <%= presupuesto.proyecto %> </h4>
+            </div>
+            <div class="col-4">
+                <h4>Versión:  <%= presupuesto.versiones %> </h4>
+            </div>
+            <div class="col-4">
+                <h4>Fecha Creación:  <%= presupuesto.fechaCreacion %> </h4>
+            </div>
+        </div>
         <hr class="my-4">
         <div id="accordion">
             <div class="card">
@@ -199,6 +211,7 @@
                         of them accusamus labore sustainable VHS.
                     </div>
                 </div>
+                <% }) %>
             </div>
         </div>
         <br>

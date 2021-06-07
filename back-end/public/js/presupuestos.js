@@ -35,55 +35,59 @@ async function agregar() {
       },
       body: JSON.stringify(newPresupuesto)
     })
-    if (resultado.ok) {
-      swal({
-        text: "Se ha creado el presupuesto correctamente",
-        icon: "success",
-      });
-      setTimeout(() => {
-        location.href = '/generarPresupuesto'
-      }, 1300);
-    }
+      .then(result => {
+        result.json()
+          .then(data => {
+            console.log(data);
+            if (result) {
+              swal({
+                text: "Se ha creado el presupuesto correctamente",
+                icon: "success",
+              });
+              location.href="/generarPresupuesto/" + data ;// /presupuesto con id
+            }
+          })
+      })
   })
 }
 
 
-async function eliminar(id,proyecto) {
+async function eliminar(id, proyecto) {
   console.log(proyecto)
   console.log(id)
   try {
-      swal({
-          buttons: {
-              cancel: true,
-              confirm: {
-                  text: "Aceptar",
-                  value: "ok"
-              },
-          },
-          text: "¿Seguro que quieres eliminar el presupuesto del proyecto: " + proyecto+ " ?",
-          icon: "info"
-      })
-          .then( async (value) => {
-              switch (value) {
-                  case "ok":
-                      let resultado = await fetch("http://localhost:3000/presupuesto/delete/" + id, { // /eliminar presupuesto
-                          method: 'get',
-                          headers: {
-                              "Accept": "application/json, text/plain, *,*",
-                              "Content-Type": "application/json",
-                          }
-                      })
-                  swal({
-                      text: "Presupuesto eliminado correctamente",
-                      icon: "success"
-                  });
-                  setTimeout(() => {
-                    location.href = '/presupuestos'
-                }, 1500);
+    swal({
+      buttons: {
+        cancel: true,
+        confirm: {
+          text: "Aceptar",
+          value: "ok"
+        },
+      },
+      text: "¿Seguro que quieres eliminar el presupuesto del proyecto: " + proyecto + " ?",
+      icon: "info"
+    })
+      .then(async (value) => {
+        switch (value) {
+          case "ok":
+            let resultado = await fetch("http://localhost:3000/presupuesto/delete/" + id, { // /eliminar presupuesto
+              method: 'get',
+              headers: {
+                "Accept": "application/json, text/plain, *,*",
+                "Content-Type": "application/json",
               }
-          })
+            })
+            swal({
+              text: "Presupuesto eliminado correctamente",
+              icon: "success"
+            });
+            setTimeout(() => {
+              location.href = '/presupuestos'
+            }, 1500);
+        }
+      })
   } catch (error) {
-      throw console.log(error)
+    throw console.log(error)
   }
 
 }

@@ -36,11 +36,12 @@ module.exports.getPresupuestos = async () => {
 module.exports.newPresupuesto = async (data) =>{
     console.log('valor a agregar',data)
     try {
-        let resultado = await Presupuesto.create(({
+         await Presupuesto.create(({
             proyecto: data.proyecto, versiones: data.versiones, fechaCreacion: data.fechaCreacion,
             estatus: data.estatus
         }))
-        return true
+        let id = await sequelize.query('Select max(idPresupuesto) as idPresupuesto from presupuestos');
+        return id[0]
     }
     catch (error) {
         throw console.log(error)
@@ -69,6 +70,19 @@ module.exports.deletePresupuesto = async (id) => {
         return true
     }catch(error){
         throw console.log(error)
+    }
+}
+
+module.exports.obtenerInfoPresupuesto  = async (data) =>{
+    let id = [
+        data
+    ]
+    try {
+        let resultado = await sequelize.query(`SELECT * FROM Presupuestos WHERE idPresupuesto = ?`,
+        {replacements : id, type : sequelize.QueryTypes.SELECT})
+        return resultado;
+    } catch (error) {
+        throw new Error ('Ocurrio un error')
     }
 }
 
