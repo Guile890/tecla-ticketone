@@ -1,233 +1,415 @@
-<%- include("cabeceras/cabecera.menu.ejs") %> 
-    <%- include("cabeceras/cabecera.navbar.ejs") %> 
-    <div class="container">
-        <% info.forEach((presupuesto)=>{ %>
-            <h2 style="text-align: center;">Nuevo presupuesto: <%= presupuesto.idPresupuesto %></h2>
-        <div class="row">
-            <div class="col-4">
-                <h4>Proyecto:  <%= presupuesto.proyecto %> </h4>
-            </div>
-            <div class="col-4">
-                <h4>Versión:  <%= presupuesto.versiones %> </h4>
-            </div>
-            <div class="col-4">
-                <h4>Fecha Creación:  <%= presupuesto.fechaCreacion %> </h4>
-            </div>
+<%- include("cabeceras/cabecera.menu.ejs") %>
+    <%- include("cabeceras/cabecera.navbar.ejs") %>
+        <div class="container">
+            <% info.forEach((presupuesto)=>{ %>
+                <h2 style="text-align: center;">Nuevo presupuesto: <%= presupuesto.idPresupuesto %>
+                </h2>
+                <div class="row">
+                    <div class="col-4">
+                        <h4>Proyecto: <%= presupuesto.proyecto %>
+                        </h4>
+                    </div>
+                    <div class="col-4">
+                        <h4>Versión: <%= presupuesto.versiones %>
+                        </h4>
+                    </div>
+                    <div class="col-4">
+                        <h4>Fecha Creación: <%= presupuesto.fechaCreacion %>
+                        </h4>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="false" aria-controls="collapseOne">
+                                    Resumen Financiero
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body" style="width: 100%;">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="ventas" class="col-form-label">Ventas</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" id="ventas" class="form-control" disabled>
+                                    </div>
+                                    <div class="col-4">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="costos" class="col-form-label">Costos</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" id="costos" class="form-control" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="margen" class="col-form-label">Margen</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" id="margen" class="form-control" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="porcentaje" class="col-form-label">%</label>
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" id="porcenajte" class="form-control" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    Flujo de Efectivo
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Mes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Ingresos</th>
+                                            <td><input type="text" id="ventasene" class="form-control" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Egresos</th>
+                                            <td><input type="text" id="costosene" class="form-control" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Total</th>
+                                            <td><input type="text" id="margenene" class="form-control" disabled></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Acomulado</th>
+                                            <td><input type="text" id="stnene" class="form-control" disabled></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Estado de Resultados
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">Enero</th>
+                                            <th scope="col">Febrero</th>
+                                            <th scope="col">Marzo</th>
+                                            <th scope="col">Abril</th>
+                                            <th scope="col">Mayo</th>
+                                            <th scope="col">Junio</th>
+                                            <th scope="col">Julio</th>
+                                            <th scope="col">Agosto</th>
+                                            <th scope="col">Septiembre</th>
+                                            <th scope="col">Octubre</th>
+                                            <th scope="col">Noviembre</th>
+                                            <th scope="col">Diciembre</th>
+                                            <th scope="col">Sumatoria</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Ventas</th>
+                                            <td><input type="text" id="ventasene" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasfeb" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasmar" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasabr" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasmay" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasjun" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasjul" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasago" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventassep" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasoct" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasnov" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventasdic" class="form-control" disabled></td>
+                                            <td><input type="text" id="ventassumatoria" class="form-control" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Costos</th>
+                                            <td><input type="text" id="costosene" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosfeb" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosmar" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosabr" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosmay" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosjun" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosjul" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosago" class="form-control" disabled></td>
+                                            <td><input type="text" id="costossep" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosoct" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosnov" class="form-control" disabled></td>
+                                            <td><input type="text" id="costosdic" class="form-control" disabled></td>
+                                            <td><input type="text" id="costossumatoria" class="form-control" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Margen</th>
+                                            <td><input type="text" id="margenene" class="form-control" disabled></td>
+                                            <td><input type="text" id="mergenfeb" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenmar" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenabr" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenmay" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenjun" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenjul" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenago" class="form-control" disabled></td>
+                                            <td><input type="text" id="margensep" class="form-control" disabled></td>
+                                            <td><input type="text" id="margenoct" class="form-control" disabled></td>
+                                            <td><input type="text" id="margennov" class="form-control" disabled></td>
+                                            <td><input type="text" id="margendic" class="form-control" disabled></td>
+                                            <td><input type="text" id="margensumatoria" class="form-control" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Saldo Final</th>
+                                            <td><input type="text" id="stnene" class="form-control" disabled></td>
+                                            <td><input type="text" id="stfeb" class="form-control" disabled></td>
+                                            <td><input type="text" id="stmar" class="form-control" disabled></td>
+                                            <td><input type="text" id="stabr" class="form-control" disabled></td>
+                                            <td><input type="text" id="stmay" class="form-control" disabled></td>
+                                            <td><input type="text" id="stjun" class="form-control" disabled></td>
+                                            <td><input type="text" id="stjul" class="form-control" disabled></td>
+                                            <td><input type="text" id="stago" class="form-control" disabled></td>
+                                            <td><input type="text" id="stsep" class="form-control" disabled></td>
+                                            <td><input type="text" id="stoct" class="form-control" disabled></td>
+                                            <td><input type="text" id="stnov" class="form-control" disabled></td>
+                                            <td><input type="text" id="stdic" class="form-control" disabled></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
+                                    aria-expanded="true" aria-controls="collapseFour">
+                                    Ingresos
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt
+                                laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                single-origin
+                                coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                                wes
+                                anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard
+                                of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive"
+                                    aria-expanded="true" aria-controls="collapseFive">
+                                    Costos directos
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt
+                                laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                single-origin
+                                coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                                wes
+                                anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard
+                                of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingSix">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix"
+                                    aria-expanded="true" aria-controls="collapseSix">
+                                    Gastos Administrativos
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt
+                                laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                single-origin
+                                coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                                wes
+                                anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard
+                                of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingSeven">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven"
+                                    aria-expanded="true" aria-controls="collapseSeven">
+                                    Recursos (% de Asignación)
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt
+                                laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                single-origin
+                                coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                                wes
+                                anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard
+                                of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingEigth">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEigth"
+                                    aria-expanded="true" aria-controls="collapseEigth">
+                                    Costos
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseEigth" class="collapse" aria-labelledby="headingEigth"
+                            data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt
+                                laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                single-origin
+                                coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                                wes
+                                anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard
+                                of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingNine">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNine"
+                                    aria-expanded="true" aria-controls="collapseNine">
+                                    Resumen Costos Recursos
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                            <div class="card-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid.
+                                3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                                nesciunt
+                                laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                single-origin
+                                coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                                wes
+                                anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                Leggings
+                                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+                                haven't heard
+                                of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+                <hr class="my-4">
+                <div style="text-align: end;">
+                    <button onclick="cancelar()" type="button" class="btn btn-secondary">Cancelar</button>
+                    <a type="button" class="btn btn-primary">Guardar</a>
+                </div>
+                <br>
         </div>
-        <hr class="my-4">
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header" id="headingOne">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                            aria-expanded="false" aria-controls="collapseOne">
-                            Resumen Financiero
-                        </button>
-                    </h5>
-                </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="/js/newPresupuesto.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
+        </body>
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                            aria-expanded="false" aria-controls="collapseTwo">
-                            Flujo de Efectivo
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingThree">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                            aria-expanded="false" aria-controls="collapseThree">
-                            Estado de Resultados
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingFour">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour"
-                            aria-expanded="true" aria-controls="collapseFour">
-                            Ingresos
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingFive">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive"
-                            aria-expanded="true" aria-controls="collapseFive">
-                            Costos directos
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingSix">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix"
-                            aria-expanded="true" aria-controls="collapseSix">
-                            Gastos Administrativos
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingSeven">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven"
-                            aria-expanded="true" aria-controls="collapseSeven">
-                            Recursos (% de Asignación)
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingEigth">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEigth"
-                            aria-expanded="true" aria-controls="collapseEigth">
-                            Costos
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseEigth" class="collapse" aria-labelledby="headingEigth" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header" id="headingNine">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNine"
-                            aria-expanded="true" aria-controls="collapseNine">
-                            Resumen Costos Recursos
-                        </button>
-                    </h5>
-                </div>
-
-                <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                        laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
-                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
-                        anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
-                        of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-                <% }) %>
-            </div>
-        </div>
-        <br>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="/js/newPresupuesto.js"></script>
-    <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"> </script>
-</body>
-
-</html>
+        </html>

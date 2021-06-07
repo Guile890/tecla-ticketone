@@ -19,7 +19,7 @@
                 <% results.forEach((presupuesto)=>{ %>
                     <tr>
                         <td>
-                            <a href="/updateProducto/<%= presupuesto.idPresupuesto%>" class="btn"><i class='bx bxs-send'></i></a>
+                            <a onclick="enviar('<%= presupuesto.proyecto%>')" class="btn"><i class='bx bxs-send'></i></a>
                         </td>
                         <td>
                             <%= presupuesto.idPresupuesto %>

@@ -34,7 +34,6 @@ module.exports.getPresupuestos = async () => {
     return resultado[0]
 }
 module.exports.newPresupuesto = async (data) =>{
-    console.log('valor a agregar',data)
     try {
          await Presupuesto.create(({
             proyecto: data.proyecto, versiones: data.versiones, fechaCreacion: data.fechaCreacion,

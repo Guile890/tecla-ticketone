@@ -53,8 +53,6 @@ async function agregar() {
 
 
 async function eliminar(id, proyecto) {
-  console.log(proyecto)
-  console.log(id)
   try {
     swal({
       buttons: {
@@ -79,6 +77,36 @@ async function eliminar(id, proyecto) {
             })
             swal({
               text: "Presupuesto eliminado correctamente",
+              icon: "success"
+            });
+            setTimeout(() => {
+              location.href = '/presupuestos'
+            }, 1500);
+        }
+      })
+  } catch (error) {
+    throw console.log(error)
+  }
+
+}
+async function enviar(proyecto) {
+  try {
+    swal({
+      buttons: {
+        cancel: true,
+        confirm: {
+          text: "Aceptar",
+          value: "ok"
+        },
+      },
+      text: "¿Seguro que quieres enviar el presupuesto del proyecto: " + proyecto + " ?",
+      icon: "info"
+    })
+      .then(async (value) => {
+        switch (value) {
+          case "ok":
+            swal({
+              text: "Presupuesto enviado correctamente",
               icon: "success"
             });
             setTimeout(() => {
